@@ -1,0 +1,23 @@
+{
+  "name": "backoffice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valeriidruzhynin/backoffice.git"
+  },
+  "author": "Valerii Druzhynin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valeriidruzhynin/backoffice/issues"
+  },
+  "homepage": "https://github.com/valeriidruzhynin/backoffice#readme",
+  "dependencies": {
+    "express-handlebars": "^4.0.4",
+    "sequelize": "^6.2.4"
+  }
+}
