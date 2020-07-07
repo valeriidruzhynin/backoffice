@@ -1,0 +1,23 @@
+.table {
+    border-collapse: collapse !important;
+}
+.table td,
+.table th {
+    background-color: #fff !important;
+}
+
+.wd-5p-force {
+    width: 5% !important;
+}
+
+.wd-10p-force {
+    width: 10% !important;
+}
+
+.wd-15p-force {
+    width: 15% !important;
+}
+
+.display tbody th, table.dataTable.display tbody td {
+    border-top-color: #dee2e6;
+}
