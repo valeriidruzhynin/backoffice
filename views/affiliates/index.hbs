@@ -3,6 +3,7 @@
             <table id="datatable" class="table display responsive nowrap">
                 <thead>
                 <tr>
+                    <th class="wd-5p-force"></th>
                     <th class="wd-5p-force">ID</th>
                     <th class="wd-10p-force">E-mail Address</th>
                     <th class="wd-15p-force">First Name</th>
@@ -20,33 +21,55 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="/vendor/select2/js/select2.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
         <script>
             $(document).ready(function(){
+
+                let data = [];
+
                 $('#datatable').DataTable({
-                    processing: true,
+                    responsive: true,
                     serverSide: true,
-                    ajax: {
+                    pageLength: 25,
+                    order: [[ 1, 'asc' ]],
+                    columnDefs: [ {
+                        orderable: false,
+                        className: 'select-checkbox',
+                        targets:   0
+                    } ],
+                    retrieve: true,
+                    select: {
+                        style:    'os',
+                        selector: 'td:first-child'
+                    },
+                    ajax: ({
                         url: '/affiliates',
                         type: 'POST',
-                        cache: false
-                    },
+                        cache: false,
+                        dataType: 'json',
+                        // success: function (result) {
+                        //     let dataTable = $('#datatable')
+                        //     // console.log(data);
+                        //     dataTable.clear().draw()
+                        //     dataTable.rows.add(result).draw()
+                        // },
+                        // error: function (err) {
+                        //     console.log(err);
+                        // }
+                    }),
                     columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'email', name: 'email' },
-                        { data: 'first_name', name: 'first_name' },
-                        { data: 'last_name', name: 'last_name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'employee_id', name: 'employee_id' },
-                        { data: 'account_mgr_id', name: 'account_mgr_id' },
-                        { data: 'account_tier', name: 'account_tier' }
+                        { data: null, defaultContent: '' },
+                        { data: 'id' },
+                        { data: 'email' },
+                        { data: 'first_name' },
+                        { data: 'last_name' },
+                        { data: 'status' },
+                        { data: 'employee_id' },
+                        { data: 'account_mgr_id' },
+                        { data: 'account_tier' }
                     ]
-                });
-
-                // Select2
-                $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+                })
 
             });
         </script>
