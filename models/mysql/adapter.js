@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize')
 
-module.exports = new Sequelize('jomedia2', 'root', 'adminQwerty554', {
+module.exports = new Sequelize(config.db.mysql.database, config.db.mysql.user, config.db.mysql.password, {
     dialect: 'mysql',
-    host: '',
+    host: config.db.mysql.host,
     port: 3306,
     define: {
         timestamps: false

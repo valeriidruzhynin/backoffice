@@ -2,6 +2,7 @@ const express = require('express')
 const handlebars = require('express-handlebars')
 const app = express()
 const bodyParser = require("body-parser")
+global.config = require('plain-config')()
 
 
 app.use(bodyParser.urlencoded({
@@ -19,6 +20,6 @@ app.use(express.static('public'))
 
 app.use('/', require('./routes/all'))
 
-app.listen(3000, () => {
+app.listen(config.port, () => {
     console.log('Server\'s working on port 3000')
 })

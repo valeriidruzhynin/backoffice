@@ -14,12 +14,11 @@ router.post('/', async (req, res) => {
     const itemCount = affiliatesData.count;
     const data = affiliatesData.rows;
 
-    res.json({
-        draw: 1,
+    res.send(JSON.stringify({
         recordsTotal: itemCount,
         recordsFiltered: itemCount,
         data: data
-    })
+    }))
 })
 
 module.exports = router
