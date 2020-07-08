@@ -1,4 +1,8 @@
 
+        <div>
+
+        </div>
+
         <div class="table-wrapper">
             <table id="datatable" class="table display responsive nowrap">
                 <thead>
@@ -21,12 +25,10 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/sl-1.3.1/datatables.min.js"></script>
 
         <script>
             $(document).ready(function(){
-
-                let data = [];
 
                 $('#datatable').DataTable({
                     responsive: true,
@@ -50,7 +52,8 @@
                         dataType: 'json',
                         // success: function (result) {
                         //     let dataTable = $('#datatable')
-                        //     // console.log(data);
+                        //     debugger
+                        //     console.log(result);
                         //     dataTable.clear().draw()
                         //     dataTable.rows.add(result).draw()
                         // },

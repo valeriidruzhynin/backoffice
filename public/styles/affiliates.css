@@ -1,9 +1,15 @@
+.table-wrapper {
+    margin: 0 auto;
+    width: 80%;
+}
+
 .table {
     border-collapse: collapse !important;
 }
 .table td,
 .table th {
     background-color: #fff !important;
+    text-align: center;
 }
 
 .wd-5p-force {
