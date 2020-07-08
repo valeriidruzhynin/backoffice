@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/valeriidruzhynin/backoffice.git"
   },
+  "engines": {
+    "node": "12.18.0"
+  },
   "author": "Valerii Druzhynin",
   "license": "ISC",
   "bugs": {
@@ -17,12 +20,15 @@
   },
   "homepage": "https://github.com/valeriidruzhynin/backoffice#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-paginate": "^1.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "plain-config": "^0.1.3",
-    "sequelize": "^6.2.4",
+    "sequelize": "^6.2.4"
+  },
+  "devDependencies": {
     "sequelize-auto": "^0.4.29"
   }
 }
