@@ -59,8 +59,13 @@ class Affiliates {
     }
 
     async updateAffiliatesData(managerId, affiliates) {
-        const sql = `UPDATE affiliates SET account_mgr_id = ${managerId} WHERE id IN () `
-        return await models.Affiliates.findAndCountAll({})
+        const sql = `UPDATE affiliates SET account_mgr_id = ${managerId} WHERE id IN (${affiliates})`;
+
+        return await models.sequelize.query(sql, {
+            plain: false,
+            raw: false,
+            type: models.Sequelize.QueryTypes.UPDATE
+        })
     }
 
 }

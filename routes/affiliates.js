@@ -19,12 +19,11 @@ router.get('/', async (req, res, next) => {
 
 router.post('/updateAffiliatesManager', async (req, res, next) => {
     try {
-        console.log(req.body)
 
-        // const affiliatesData = await new Affiliates().findAllAffiliates(req.query.start, req.query.length)
-        // const data = getHighestTier(affiliatesData.rows);
+        let result = await new Affiliates().updateAffiliatesData(+req.body.managerId, req.body.affiliates)
 
-        //res.send(data)
+        res.send(result)
+
     } catch (error) {
         next(error);
     }
