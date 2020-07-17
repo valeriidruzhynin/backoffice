@@ -11,6 +11,10 @@ config.db = {
     }
 }
 
+config.cors = {
+    whiteList: []
+}
+
 // config.influxdb = {
 //     host: 'https://influx.surge.systems/influxdb',
 //     project: 'cap_control',

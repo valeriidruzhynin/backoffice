@@ -24,7 +24,7 @@ class Affiliates {
     // }
 
     async findAllAffiliates(offset, limit) {
-        const queryOptions = ` LIMIT :offset, :limit`;
+        const queryOptions = ` ORDER BY id DESC LIMIT ${+offset}, ${+limit}`;
         const sql = `SELECT affiliates.id, affiliates.email, affiliates.first_name, affiliates.last_name,
                             affiliates.status, affiliates.affiliate_type, affiliates.employee_id, account_mgr_id,
                             account_tier,
@@ -57,6 +57,12 @@ class Affiliates {
             console.log(e);
         }
     }
+
+    async updateAffiliatesData(managerId, affiliates) {
+        const sql = `UPDATE affiliates SET account_mgr_id = ${managerId} WHERE id IN () `
+        return await models.Affiliates.findAndCountAll({})
+    }
+
 }
 
 module.exports = Affiliates;

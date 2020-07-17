@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/valeriidruzhynin/backoffice#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-paginate": "^1.0.0",
