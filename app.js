@@ -2,7 +2,6 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const jsonParser = bodyParser.json();
 
 global.config = require('plain-config')();
 
@@ -24,8 +23,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(jsonParser);
-
 app.set('view engine', 'hbs');
 
 app.engine('hbs', handlebars({
@@ -40,7 +37,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-app.use('/', cors(corsOptions), jsonParser, require('./routes/all'));
+app.use('/', cors(corsOptions), require('./routes/all'));
 
 app.listen(config.port, () => {
     console.log(`Server\'s working on port ${config.port}`)
