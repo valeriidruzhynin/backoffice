@@ -1,8 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const Affiliates = require('../controllers/affiliates');
 const paginate = require('express-paginate');
 const getHighestTier = require('../helpers/getHighestTier');
+
+const router = express.Router();
+const affiliates = new Affiliates();
 
 router.use(paginate.middleware(25, 50));
 
@@ -20,7 +22,19 @@ router.get('/', async (req, res, next) => {
 router.post('/updateAffiliatesManager', async (req, res, next) => {
     try {
 
-        let result = await new Affiliates().updateAffiliatesData(+req.body.managerId, req.body.affiliates)
+        let result = await affiliates.updateAffiliatesData(+req.body.managerId, req.body.affiliates)
+
+        res.send(result)
+
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post('/rejectAffiliates', async (req, res, next) => {
+    try {
+
+        let result = await affiliates.rejectAffiliates(req.body.affiliates)
 
         res.send(result)
 

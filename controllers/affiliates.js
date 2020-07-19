@@ -68,6 +68,16 @@ class Affiliates {
         })
     }
 
+    async rejectAffiliates(affiliates) {
+        const sql = `UPDATE affiliates SET status = 'rejected' WHERE id IN (${affiliates})`;
+
+        return await models.sequelize.query(sql, {
+            plain: false,
+            raw: false,
+            type: models.Sequelize.QueryTypes.UPDATE
+        })
+    }
+
 }
 
 module.exports = Affiliates;
