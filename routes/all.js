@@ -6,5 +6,6 @@ router.get('/health', (req, res) => {
 })
 
 router.use('/affiliates', require('./affiliates'))
+router.use('/managers', require('./managers'))
 
 module.exports = router

@@ -1,30 +1,12 @@
 const models = require('../models');
 
 class Affiliates {
-    // async findAllAffiliates(offset, limit) {
-    //     return await models.Affiliates.findAndCountAll({
-    //         offset: +offset,
-    //         limit: +limit,
-    //         attributes: ['id', 'email', 'first_name', 'last_name', 'status', 'affiliate_type', 'employee_id', 'account_mgr_id', 'account_tier'],
-    //         // include: [{
-    //         //     model: models.AffiliateAttrLogs,
-    //         //     attributes: [
-    //         //         [models.Sequelize.fn('GROUP_CONCAT', models.Sequelize.literal("new_value SEPARATOR '||'")), 'tiers']
-    //         //     ],
-    //         //     where: {
-    //         //       'field': 'account_tier'
-    //         //     },
-    //         //     group: ['affiliate_id']
-    //         // }],
-    //         order: [
-    //             ['id', 'DESC']
-    //         ],
-    //         raw: true
-    //     })
-    // }
 
     async findAllAffiliates(offset, limit) {
-        const queryOptions = ` ORDER BY id DESC LIMIT ${+offset}, ${+limit}`;
+        let date = new Date()
+        let ninetyDaysAgo = Math.floor(date.setMonth(date.getMonth() - 3) / 1000)
+
+        const queryOptions = ` WHERE affiliates.status='active' AND affiliates.date_added < ${ninetyDaysAgo} ORDER BY id DESC`;
         const sql = `SELECT affiliates.id, affiliates.email, affiliates.first_name, affiliates.last_name,
                             affiliates.status, affiliates.affiliate_type, affiliates.employee_id, account_mgr_id,
                             account_tier,
