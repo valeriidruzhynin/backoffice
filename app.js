@@ -1,5 +1,4 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 
@@ -22,15 +21,6 @@ const corsOptions = {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
-app.set('view engine', 'hbs');
-
-app.engine('hbs', handlebars({
-    layoutsDir: __dirname + '/views/layouts',
-    extname: 'hbs'
-}));
-
-app.use(express.static('public'));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

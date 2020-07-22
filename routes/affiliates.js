@@ -1,12 +1,9 @@
 const express = require('express');
 const Affiliates = require('../controllers/affiliates');
-const paginate = require('express-paginate');
 const getHighestTier = require('../helpers/getHighestTier');
 
 const router = express.Router();
 const affiliates = new Affiliates();
-
-router.use(paginate.middleware(25, 50));
 
 router.get('/', async (req, res, next) => {
     try {
